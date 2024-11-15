@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { Button } from '@/components/ui/button';
+
+import { usePage } from '@inertiajs/vue3'
+
+const page = usePage()
+const user = page.props.auth.user
 </script>
 
 <template>
@@ -21,10 +27,14 @@ import { Head } from '@inertiajs/vue3';
                     class="overflow-hidden bg-white shadow-sm sm:rounded-lg"
                 >
                     <div class="p-6 text-gray-900">
-                        You're logged in!
+                        You're logged in as {{ user.name }}!
                     </div>
                 </div>
             </div>
         </div>
+
+        <Button>
+            Logout
+        </Button>
     </AuthenticatedLayout>
 </template>
